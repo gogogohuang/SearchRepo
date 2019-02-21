@@ -1,7 +1,6 @@
 var express = require('express');
 var engines = require('consolidate');
 var app = express();
-const PORT = 3000;
 
 app.set('views', __dirname + '/');
 app.set('view engine', 'html');
@@ -10,7 +9,6 @@ app.use(express.static('public'));
 app.use(express.static('./'));
 
 app.get('/', function (req, res) {
-  console.log('express - get');
   res.render('index.html');
 });
 

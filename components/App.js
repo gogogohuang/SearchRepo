@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { createGlobalStyle } from "styled-components";
+import SearchContainer from './search/searchContainer';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Raleway');
@@ -25,7 +26,8 @@ class App extends Component {
   render() {
     return (
         <Container>
-          Hello World
+          <GlobalStyle />
+          <SearchContainer />
         </Container>
     );
   }

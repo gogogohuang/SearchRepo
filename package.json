@@ -2,11 +2,18 @@
   "name": "searchrepo",
   "version": "0.9.0",
   "description": "Search Repo",
+  "engines": {
+    "node": "8.12.0"
+  },
+  "cacheDirectories": [
+    "node_modules"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "start": "npm run-script build && node server.js"
+    "heroku-postbuild": "npm install && npm run build",
+    "start": "node server"
   },
   "repository": {
     "type": "git",

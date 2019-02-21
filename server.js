@@ -3,16 +3,16 @@ var engines = require('consolidate');
 var app = express();
 
 app.set('views', __dirname + '/');
-app.engine('html', engines.mustache);
 app.set('view engine', 'html');
+app.engine('html', engines.mustache);
 app.use(express.static('public'));
-app.use(express.static('files'));
+app.use(express.static('./'));
 
 app.get('/', function (req, res) {
   res.render('index.html');
 });
 
-
-app.listen(3000, ()=>{
-  console.log('listen on 3000 port');
+const server = app.listen(process.env.PORT || 8080, function () {
+  const port = server.address().port;
+  console.log("App now running on port", port);
 });

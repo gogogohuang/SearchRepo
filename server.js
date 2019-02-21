@@ -5,6 +5,8 @@ var app = express();
 app.set('views', __dirname + '/');
 app.engine('html', engines.mustache);
 app.set('view engine', 'html');
+app.use(express.static('public'));
+app.use(express.static('files'));
 
 app.get('/', function (req, res) {
   res.render('index.html');

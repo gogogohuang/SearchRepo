@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 import styled from 'styled-components';
 import Flex from 'styled-flex-component';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
+import isEmpty from 'lodash/isEmpty';
 
 import { REPO } from '../../common/constant';
 import { createURL } from '../../utils/net';
@@ -16,6 +18,8 @@ import SearchResult from './searchResult';
 
 const _ = {
   throttle,
+  debounce,
+  isEmpty
 };
 
 const H2 = styled.h2`
@@ -31,10 +35,11 @@ class SearchContainer extends Component {
     searchPattern: '',
     page: 1,
     height: 0,
+    isButtonDisabled: true,
   }
 
   handleChange = e => {
-    this.setState({ searchPattern: e.target.value });
+    this.setState({ searchPattern: e.target.value, isButtonDisabled: !e.target.value.replace(/\s/g, '').length });
   };
 
   handleSubmit = e => {
@@ -45,16 +50,21 @@ class SearchContainer extends Component {
       return;
     }
 
+    this.setState({ isButtonDisabled: true });
+
     const requestUrl = createURL(REPO, {
       q: this.state.searchPattern,
-      sort: 'stars',
-      order: 'desc',
+      sort: 'updated',
       per_page: 100,
       page: 1
     });
+
     axios.get(requestUrl)
       .then(response => {
         this.setState(response.data);
+        setTimeout(() => {
+          this.setState({ isButtonDisabled: false })
+        }, 6000);
       })
       .catch((error) => {
         console.log(error);
@@ -73,8 +83,7 @@ class SearchContainer extends Component {
       this.setState({ page: this.state.page + 1 }, () => {
         const requestUrl = createURL(REPO, {
           q: this.state.searchPattern,
-          sort: 'stars',
-          order: 'desc',
+          sort: 'updated',
           per_page: 100,
           page: this.state.page
         });
@@ -110,7 +119,7 @@ class SearchContainer extends Component {
               onChange={this.handleChange}
               margin="normal" />
             <IconButtonWrapper>
-              <IconButton type="submit" aria-label="Search"><SearchIcon /></IconButton>
+              <IconButton disabled={this.state.isButtonDisabled} type="submit" aria-label="Search"><SearchIcon /></IconButton>
             </IconButtonWrapper>
           </SearchBox>
         </form>

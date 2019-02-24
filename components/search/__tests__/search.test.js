@@ -5,7 +5,6 @@ import SearchContainer from '../searchContainer';
 import 'jest-enzyme';
 import 'jest-styled-components';
 
-
 describe('SearchContainer', ()=> {
   it('SearchContainer search init', ()=> {
     const searchContainer = mount(<SearchContainer />)

@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
+import isEmpty from 'lodash/isEmpty';
 
 import { REPO } from '../../common/constant';
 import { createURL } from '../../utils/net';
@@ -17,7 +18,8 @@ import SearchResult from './searchResult';
 
 const _ = {
   throttle,
-  debounce
+  debounce,
+  isEmpty
 };
 
 const H2 = styled.h2`
@@ -33,10 +35,11 @@ class SearchContainer extends Component {
     searchPattern: '',
     page: 1,
     height: 0,
+    isButtonDisabled: true,
   }
 
   handleChange = e => {
-    this.setState({ searchPattern: e.target.value });
+    this.setState({ searchPattern: e.target.value, isButtonDisabled: !e.target.value.replace(/\s/g, '').length });
   };
 
   handleSubmit = e => {
@@ -46,6 +49,8 @@ class SearchContainer extends Component {
       this.setState({ items: [], page: 1 });
       return;
     }
+
+    this.setState({ isButtonDisabled: true });
 
     const requestUrl = createURL(REPO, {
       q: this.state.searchPattern,
@@ -57,6 +62,9 @@ class SearchContainer extends Component {
     axios.get(requestUrl)
       .then(response => {
         this.setState(response.data);
+        setTimeout(() => {
+          this.setState({ isButtonDisabled: false })
+        }, 6000);
       })
       .catch((error) => {
         console.log(error);
@@ -111,7 +119,7 @@ class SearchContainer extends Component {
               onChange={this.handleChange}
               margin="normal" />
             <IconButtonWrapper>
-              <IconButton type="submit" aria-label="Search"><SearchIcon /></IconButton>
+              <IconButton disabled={this.state.isButtonDisabled} type="submit" aria-label="Search"><SearchIcon /></IconButton>
             </IconButtonWrapper>
           </SearchBox>
         </form>

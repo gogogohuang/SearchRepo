@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 import styled from 'styled-components';
 import Flex from 'styled-flex-component';
 import TextField from '@material-ui/core/TextField';
@@ -16,6 +17,7 @@ import SearchResult from './searchResult';
 
 const _ = {
   throttle,
+  debounce
 };
 
 const H2 = styled.h2`
@@ -47,11 +49,11 @@ class SearchContainer extends Component {
 
     const requestUrl = createURL(REPO, {
       q: this.state.searchPattern,
-      sort: 'stars',
-      order: 'desc',
+      sort: 'updated',
       per_page: 100,
       page: 1
     });
+
     axios.get(requestUrl)
       .then(response => {
         this.setState(response.data);
@@ -73,8 +75,7 @@ class SearchContainer extends Component {
       this.setState({ page: this.state.page + 1 }, () => {
         const requestUrl = createURL(REPO, {
           q: this.state.searchPattern,
-          sort: 'stars',
-          order: 'desc',
+          sort: 'updated',
           per_page: 100,
           page: this.state.page
         });

@@ -23,6 +23,11 @@ const RepoWrapper = styled.a`
   animation: ${fadeIn} 1s linear;
   cursor: pointer;
   text-decoration: none;
+  * {
+    overflow : hidden;
+    text-overflow : ellipsis;
+    white-space : nowrap;
+  }
 `;
 
 const AuthorWrapper = styled(Flex)``;

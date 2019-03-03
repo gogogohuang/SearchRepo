@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import Flex from 'styled-flex-component';
 import isEmpty from 'lodash/isEmpty';
+import isUndefined from 'lodash/isUndefined';
 import Moment from 'moment';
 
 import { colors, typography } from '../theme/common_var';
@@ -9,6 +10,7 @@ import { fadeIn } from '../theme/animation';
 
 const _ = {
   isEmpty,
+  isUndefined
 }
 
 const Container = styled(Flex)``;
@@ -23,11 +25,6 @@ const RepoWrapper = styled.a`
   animation: ${fadeIn} 1s linear;
   cursor: pointer;
   text-decoration: none;
-  * {
-    overflow : hidden;
-    text-overflow : ellipsis;
-    white-space : nowrap;
-  }
 `;
 
 const AuthorWrapper = styled(Flex)``;
@@ -37,6 +34,7 @@ const AvatarWrapper = styled.div``;
 const RepoTitle = styled.div`
   color: ${colors.gray.grayA4};
   font-size: ${typography.font.size.larger};
+  white-space : normal;
 `;
 
 const RepoUpdatedTime = styled.div`
@@ -49,8 +47,9 @@ const Tip = styled.h3`
 `;
 
 const SearchResult = ({ parentState }) => {
-
-  if (parentState.searchPattern.length === 0 && _.isEmpty(parentState.items)) return <Container center column full />;
+  if (_.isUndefined(parentState.items)) return <Container center column full />;
+  if (parentState.total_count === 0) return <Container center column full >Nothin</Container>;
+  
   const _total_items_count = _.isEmpty(parentState.items) ? 0 : parentState.items.length;
 
   return (

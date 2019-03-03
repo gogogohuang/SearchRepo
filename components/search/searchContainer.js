@@ -15,6 +15,7 @@ import { colors } from '../theme/common_var';
 import './_searchInput.scss';
 
 import SearchResult from './searchResult';
+import SearchAlertModal from './searchAlertModal';
 
 const _ = {
   throttle,
@@ -36,6 +37,11 @@ class SearchContainer extends Component {
     page: 1,
     height: 0,
     isButtonDisabled: true,
+    rateLimitReset: undefined,
+  }
+
+  update = (obj) => {
+    this.setState(obj);
   }
 
   handleChange = e => {
@@ -62,6 +68,12 @@ class SearchContainer extends Component {
     axios.get(requestUrl)
       .then(response => {
         this.setState(response.data);
+        if (response.headers['x-ratelimit-remaining'] === 0) {
+          this.setState({
+            rateLimitReset: response.headers['x-ratelimit-reset'],
+          })
+        }
+
         setTimeout(() => {
           this.setState({ isButtonDisabled: false })
         }, 6000);
@@ -72,12 +84,14 @@ class SearchContainer extends Component {
   }
 
   handleScroll = () => {
+    if(this.state.total_count === this.state.items.length) return;
+
     const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
     const body = document.body;
     const html = document.documentElement;
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
     const windowBottom = windowHeight + window.pageYOffset;
-    const distanceFromBottom = 200;
+    const distanceFromBottom = 500;
 
     if (windowBottom >= (docHeight - distanceFromBottom)) { /**Prefetch */
       this.setState({ page: this.state.page + 1 }, () => {
@@ -109,6 +123,7 @@ class SearchContainer extends Component {
   render() {
     return (
       <Flex full center column>
+        <SearchAlertModal rateLimitReset={this.state.rateLimitReset} update={this.update} />
         <H2>Search repositories in Github</H2>
         <form onSubmit={this.handleSubmit} className="search-form">
           <SearchBox className="search-box">

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { throttleAdapterEnhancer } from 'axios-extensions';
 import { API_URL } from '../common/constant';
+import { REPO } from '../common/constant';
 
 const THRESHOLD_MS = 50 * 1000; // current sync interval is 60s
 
@@ -35,4 +36,15 @@ export const getAPIClient = (type, request_payload) => {
   const requestPath = `${API_URL}/${type}?${para}`;
 
   return apiClientFactory({ baseURL: requestPath });
+}
+
+
+export const getGithubRepo = (searchPattern) => {
+  const getClient = getAPIClient(REPO, {
+    q: searchPattern,
+    sort: 'updated',
+    per_page: 100,
+    page: 1
+  });
+  return getClient.get();
 }

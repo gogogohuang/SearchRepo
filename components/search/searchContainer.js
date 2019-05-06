@@ -11,12 +11,13 @@ import isEmpty from 'lodash/isEmpty';
 
 import { REPO } from '../../common/constant';
 import { createURL } from '../../utils/net';
-import { getAPIClient } from '../../utils/apis';
+import { getGithubRepo } from '../../utils/apis';
 import { colors } from '../theme/common_var';
 import './_searchInput.scss';
 
 import SearchResult from './searchResult';
 import SearchAlertModal from './searchAlertModal';
+import { resolve } from 'path';
 
 const _ = {
   throttle,
@@ -55,31 +56,35 @@ class SearchContainer extends Component {
       this.setState({ items: [], page: 1 });
       return;
     }
+    this.loadData();
+  }
 
-    this.setState({ isButtonDisabled: true });
-
-    const apiClient = getAPIClient(REPO, {
-      q: this.state.searchPattern,
-      sort: 'updated',
-      per_page: 100,
-      page: 1
+  getSearchData = (searchPattern) =>
+    new Promise((resolve, reject) => {
+      const apiClient = getGithubRepo(searchPattern);
+      apiClient.then(response => resolve(response))
+      .catch(reject)
     });
 
-    apiClient
-      .get()
-      .then(response => {
-        this.setState(response.data);
-        if (response.headers['x-ratelimit-remaining'] === 0) {
-          this.setState({
-            rateLimitReset: response.headers['x-ratelimit-reset'],
-          })
-        }
+  loadData = async () => {
+    this.setState({ isButtonDisabled: true });
 
-        setTimeout(() => {
-          this.setState({ isButtonDisabled: false })
-        }, 6000);
-      })
-      .catch(err => { console.error(err); })
+    try {
+      const response = await this.getSearchData(this.state.searchPattern);
+
+      this.setState(response.data);
+      if (response.headers['x-ratelimit-remaining'] === 0) {
+        this.setState({
+          rateLimitReset: response.headers['x-ratelimit-reset'],
+        })
+      }
+      setTimeout(() => {
+        this.setState({ isButtonDisabled: false })
+      }, 6000);
+    } catch (e) {
+      this.setState({ isButtonDisabled: true });
+      console.error(e);
+    }
   }
 
   handleScroll = () => {

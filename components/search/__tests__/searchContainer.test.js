@@ -1,9 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import SearchContainer from '../searchContainer';
+import { getGithubRepo } from '../../../utils/apis';
+import searchResult from '../../../testUtils/fakeSearchResult.json';
+
 import 'jest-enzyme';
 import 'jest-styled-components';
 import 'babel-polyfill';
+
+jest.mock('../../../utils/apis', () => ({
+  getGithubRepo: jest.fn(() => Promise.resolve()),
+}));
 
 describe('SearchContainer', () => {
   let makeSubject, genSearchPattern;
@@ -27,7 +34,7 @@ describe('SearchContainer', () => {
     expect(subject.find('input').getDOMNode().value).toEqual(genSearchPattern(searchPattern));
   });
 
-  it('Search Button Click', async () => {
+  it('Search Button Click', () => {
     const subject = makeSubject();
     const searchPattern = 'line';
     subject.find('input').simulate('change', { target: { value: searchPattern } });
@@ -36,11 +43,17 @@ describe('SearchContainer', () => {
     expect(subject.state().isButtonDisabled).toEqual(false);
   });
 
+  it.only('SearchContainer loadData', async () => {
+    getGithubRepo.mockReturnValueOnce(Promise.resolve(searchResult));
+    const subject = makeSubject();
+    await subject.instance().loadData();
+
+    expect(subject.state().page).toEqual(1);
+  });
+
   it('Search handleScroll Function', async () => {
     const subject = makeSubject();
     subject.instance().handleScroll();
     expect(subject.state().page).toEqual(1);
   });
-
-  
 });

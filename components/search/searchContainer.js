@@ -11,6 +11,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import { REPO } from '../../common/constant';
 import { createURL } from '../../utils/net';
+import { getAPIClient } from '../../utils/apis';
 import { colors } from '../theme/common_var';
 import './_searchInput.scss';
 
@@ -29,7 +30,6 @@ const H2 = styled.h2`
 
 const SearchBox = styled.div``;
 const IconButtonWrapper = styled.div``;
-
 class SearchContainer extends Component {
   state = {
     ...this.state,
@@ -58,14 +58,15 @@ class SearchContainer extends Component {
 
     this.setState({ isButtonDisabled: true });
 
-    const requestUrl = createURL(REPO, {
+    const apiClient = getAPIClient(REPO, {
       q: this.state.searchPattern,
       sort: 'updated',
       per_page: 100,
       page: 1
     });
 
-    axios.get(requestUrl)
+    apiClient
+      .get()
       .then(response => {
         this.setState(response.data);
         if (response.headers['x-ratelimit-remaining'] === 0) {
@@ -78,15 +79,13 @@ class SearchContainer extends Component {
           this.setState({ isButtonDisabled: false })
         }, 6000);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(err => { console.error(err); })
   }
 
   handleScroll = () => {
-    if(!this.state.items) return;
+    if (!this.state.items) return;
 
-    if(this.state.total_count === this.state.items.length) return;
+    if (this.state.total_count === this.state.items.length) return;
 
     const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
     const body = document.body;

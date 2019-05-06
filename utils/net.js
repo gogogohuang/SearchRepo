@@ -6,7 +6,7 @@ export const createURL = (type, request_payload) => {
   for (let key in request_payload) {
     para += `&${key}=${request_payload[key]}`;
   }
-  
+
   const requestPath = `${API_URL}/${type}?${para}`;
   return requestPath;
 }

@@ -41,4 +41,6 @@ describe('SearchContainer', () => {
     subject.instance().handleScroll();
     expect(subject.state().page).toEqual(1);
   });
+
+  
 });

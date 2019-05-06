@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search SnapShop should render as snapshot 1`] = `
+"<SearchResult parentState={{...}}>
+  <Styled(flex) center={true} column={true} full={true}>
+    <StyledComponent center={true} column={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+      <div className=\\"flex-x9ump0-0 sc-bdVaJa gCewfW\\">
+        <styled.a className=\\"paper\\" href={[undefined]} target=\\"_blank\\">
+          <StyledComponent className=\\"paper\\" href={[undefined]} target=\\"_blank\\" forwardedComponent={{...}} forwardedRef={{...}}>
+            <a className=\\"paper sc-bwzfXH jMNjky\\" href={[undefined]} target=\\"_blank\\">
+              <Styled(flex) justifyStart={true} alignCenter={true} full={true}>
+                <StyledComponent justifyStart={true} alignCenter={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"flex-x9ump0-0 sc-htpNat iFrlIw\\">
+                    <styled.div className=\\"avartar-circle\\">
+                      <StyledComponent className=\\"avartar-circle\\" forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"avartar-circle sc-ifAKCX cFlEyZ\\">
+                          <img src=\\"https://c1.staticflickr.com/5/4865/45542182465_b4e6ba4ed5_m.jpg\\" />
+                        </div>
+                      </StyledComponent>
+                    </styled.div>
+                    <styled.div className=\\"author\\">
+                      <StyledComponent className=\\"author\\" forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"author sc-bxivhb bUZGRr\\" />
+                      </StyledComponent>
+                    </styled.div>
+                  </div>
+                </StyledComponent>
+              </Styled(flex)>
+              <styled.div>
+                <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"sc-EHOje hKacVY\\">
+                    Repository : 
+                  </div>
+                </StyledComponent>
+              </styled.div>
+              <flex justifyEnd={true} alignCenter={true} full={true}>
+                <StyledComponent justifyEnd={true} alignCenter={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"flex-x9ump0-0 bnaYAX\\">
+                    <styled.div>
+                      <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"sc-bZQynM bBVgHW\\">
+                          Last Updated : 
+                          May 6th 2019
+                        </div>
+                      </StyledComponent>
+                    </styled.div>
+                  </div>
+                </StyledComponent>
+              </flex>
+            </a>
+          </StyledComponent>
+        </styled.a>
+        <styled.a className=\\"paper\\" href={[undefined]} target=\\"_blank\\">
+          <StyledComponent className=\\"paper\\" href={[undefined]} target=\\"_blank\\" forwardedComponent={{...}} forwardedRef={{...}}>
+            <a className=\\"paper sc-bwzfXH jMNjky\\" href={[undefined]} target=\\"_blank\\">
+              <Styled(flex) justifyStart={true} alignCenter={true} full={true}>
+                <StyledComponent justifyStart={true} alignCenter={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"flex-x9ump0-0 sc-htpNat iFrlIw\\">
+                    <styled.div className=\\"avartar-circle\\">
+                      <StyledComponent className=\\"avartar-circle\\" forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"avartar-circle sc-ifAKCX cFlEyZ\\">
+                          <img src=\\"https://c1.staticflickr.com/5/4865/45542182465_b4e6ba4ed5_m.jpg\\" />
+                        </div>
+                      </StyledComponent>
+                    </styled.div>
+                    <styled.div className=\\"author\\">
+                      <StyledComponent className=\\"author\\" forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"author sc-bxivhb bUZGRr\\" />
+                      </StyledComponent>
+                    </styled.div>
+                  </div>
+                </StyledComponent>
+              </Styled(flex)>
+              <styled.div>
+                <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"sc-EHOje hKacVY\\">
+                    Repository : 
+                  </div>
+                </StyledComponent>
+              </styled.div>
+              <flex justifyEnd={true} alignCenter={true} full={true}>
+                <StyledComponent justifyEnd={true} alignCenter={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"flex-x9ump0-0 bnaYAX\\">
+                    <styled.div>
+                      <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"sc-bZQynM bBVgHW\\">
+                          Last Updated : 
+                          May 6th 2019
+                        </div>
+                      </StyledComponent>
+                    </styled.div>
+                  </div>
+                </StyledComponent>
+              </flex>
+            </a>
+          </StyledComponent>
+        </styled.a>
+        <styled.h3>
+          <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+            <h3 className=\\"sc-gzVnrw eiKTga\\">
+              More...
+            </h3>
+          </StyledComponent>
+        </styled.h3>
+      </div>
+    </StyledComponent>
+  </Styled(flex)>
+</SearchResult>"
+`;
+
+exports[`Search should render as snapshot 1`] = `
+"<SearchResult parentState={{...}}>
+  <Styled(flex) center={true} column={true} full={true}>
+    <StyledComponent center={true} column={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+      <div className=\\"flex-x9ump0-0 sc-bdVaJa gCewfW\\">
+        <styled.a className=\\"paper\\" href={[undefined]} target=\\"_blank\\">
+          <StyledComponent className=\\"paper\\" href={[undefined]} target=\\"_blank\\" forwardedComponent={{...}} forwardedRef={{...}}>
+            <a className=\\"paper sc-bwzfXH jMNjky\\" href={[undefined]} target=\\"_blank\\">
+              <Styled(flex) justifyStart={true} alignCenter={true} full={true}>
+                <StyledComponent justifyStart={true} alignCenter={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"flex-x9ump0-0 sc-htpNat iFrlIw\\">
+                    <styled.div className=\\"avartar-circle\\">
+                      <StyledComponent className=\\"avartar-circle\\" forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"avartar-circle sc-ifAKCX cFlEyZ\\">
+                          <img src=\\"https://c1.staticflickr.com/5/4865/45542182465_b4e6ba4ed5_m.jpg\\" />
+                        </div>
+                      </StyledComponent>
+                    </styled.div>
+                    <styled.div className=\\"author\\">
+                      <StyledComponent className=\\"author\\" forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"author sc-bxivhb bUZGRr\\" />
+                      </StyledComponent>
+                    </styled.div>
+                  </div>
+                </StyledComponent>
+              </Styled(flex)>
+              <styled.div>
+                <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"sc-EHOje hKacVY\\">
+                    Repository : 
+                  </div>
+                </StyledComponent>
+              </styled.div>
+              <flex justifyEnd={true} alignCenter={true} full={true}>
+                <StyledComponent justifyEnd={true} alignCenter={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"flex-x9ump0-0 bnaYAX\\">
+                    <styled.div>
+                      <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"sc-bZQynM bBVgHW\\">
+                          Last Updated : 
+                          May 6th 2019
+                        </div>
+                      </StyledComponent>
+                    </styled.div>
+                  </div>
+                </StyledComponent>
+              </flex>
+            </a>
+          </StyledComponent>
+        </styled.a>
+        <styled.a className=\\"paper\\" href={[undefined]} target=\\"_blank\\">
+          <StyledComponent className=\\"paper\\" href={[undefined]} target=\\"_blank\\" forwardedComponent={{...}} forwardedRef={{...}}>
+            <a className=\\"paper sc-bwzfXH jMNjky\\" href={[undefined]} target=\\"_blank\\">
+              <Styled(flex) justifyStart={true} alignCenter={true} full={true}>
+                <StyledComponent justifyStart={true} alignCenter={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"flex-x9ump0-0 sc-htpNat iFrlIw\\">
+                    <styled.div className=\\"avartar-circle\\">
+                      <StyledComponent className=\\"avartar-circle\\" forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"avartar-circle sc-ifAKCX cFlEyZ\\">
+                          <img src=\\"https://c1.staticflickr.com/5/4865/45542182465_b4e6ba4ed5_m.jpg\\" />
+                        </div>
+                      </StyledComponent>
+                    </styled.div>
+                    <styled.div className=\\"author\\">
+                      <StyledComponent className=\\"author\\" forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"author sc-bxivhb bUZGRr\\" />
+                      </StyledComponent>
+                    </styled.div>
+                  </div>
+                </StyledComponent>
+              </Styled(flex)>
+              <styled.div>
+                <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"sc-EHOje hKacVY\\">
+                    Repository : 
+                  </div>
+                </StyledComponent>
+              </styled.div>
+              <flex justifyEnd={true} alignCenter={true} full={true}>
+                <StyledComponent justifyEnd={true} alignCenter={true} full={true} forwardedComponent={{...}} forwardedRef={{...}}>
+                  <div className=\\"flex-x9ump0-0 bnaYAX\\">
+                    <styled.div>
+                      <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+                        <div className=\\"sc-bZQynM bBVgHW\\">
+                          Last Updated : 
+                          May 6th 2019
+                        </div>
+                      </StyledComponent>
+                    </styled.div>
+                  </div>
+                </StyledComponent>
+              </flex>
+            </a>
+          </StyledComponent>
+        </styled.a>
+        <styled.h3>
+          <StyledComponent forwardedComponent={{...}} forwardedRef={{...}}>
+            <h3 className=\\"sc-gzVnrw eiKTga\\">
+              Nothin
+            </h3>
+          </StyledComponent>
+        </styled.h3>
+      </div>
+    </StyledComponent>
+  </Styled(flex)>
+</SearchResult>"
+`;

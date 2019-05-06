@@ -49,7 +49,6 @@ const Tip = styled.h3`
 const SearchResult = ({ parentState }) => {
   if (_.isUndefined(parentState.items)) return <Container center column full />;
   if (parentState.total_count === 0) return <Container center column full >Nothin</Container>;
-  
   const _total_items_count = _.isEmpty(parentState.items) ? 0 : parentState.items.length;
 
   return (

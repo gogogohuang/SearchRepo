@@ -11,6 +11,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node test.js --env=jsdom",
+    "test:coverage": "yarn run test --coverage --coverageDirectory=build/report/coverage",
     "build": "webpack --mode production",
     "heroku-postbuild": "npm install && npm run build",
     "start": "node server"

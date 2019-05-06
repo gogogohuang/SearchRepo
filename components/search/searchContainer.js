@@ -84,6 +84,8 @@ class SearchContainer extends Component {
   }
 
   handleScroll = () => {
+    if(!this.state.items) return;
+
     if(this.state.total_count === this.state.items.length) return;
 
     const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;

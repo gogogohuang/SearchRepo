@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
 import { createGlobalStyle } from "styled-components";
-import SearchContainer from '../search/searchContainer';
+// import SearchContainer from "../search/searchContainer";
+import DraggedTags from "../DraggedTags/DraggedTags";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Raleway');
@@ -25,10 +26,10 @@ class App extends Component {
 
   render() {
     return (
-        <Container>
-          <GlobalStyle />
-          <SearchContainer />
-        </Container>
+      <Container>
+        <GlobalStyle />
+        <DraggedTags />
+      </Container>
     );
   }
 }

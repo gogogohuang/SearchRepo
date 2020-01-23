@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  padding-top: 10em;
+
+  .tags-container {
+    border: solid 1px black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+
+    .tag {
+      border: solid 1px #8d8d8d;
+      font-size: 16px;
+      padding: 0 1em;
+      margin: 0.5em;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+  }
+}
